@@ -4,7 +4,7 @@ A simple Python script that downloads images from URLs and organizes them locall
 
 ## Overview
 
-This tool allows you to easily fetch images from the web and store them in an organized directory structure. It handles various edge cases gracefully and provides a reliable way to collect images for personal or educational use.
+This tool enables you to easily retrieve images from the web and store them in a well-organized directory structure. It handles various edge cases gracefully and provides a reliable method for collecting images for personal or educational use.
 
 ## Features
 
@@ -73,7 +73,7 @@ The script gracefully handles:
 ```
 project-directory/
 │
-├── image_fetcher.py
+├── image_fetcher_scripty.py
 └── Fetched_Images/
     ├── image1.jpg
     ├── image2.png
