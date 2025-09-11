@@ -1,155 +1,128 @@
-# Image Fetcher
+# 🌍 Ubuntu Image Fetcher
 
-A simple Python script that downloads images from URLs and organizes them locally, embodying Ubuntu principles of community, respect, sharing, and practicality.
+**"I am because we are" --- A mindful way to fetch images from the
+web.**
 
-## Overview
+Ubuntu Image Fetcher is a Python tool designed to download images while
+embracing the spirit of **Ubuntu**: - **Community**: Connects
+respectfully to the global web\
+- **Respect**: Handles errors gracefully and validates content\
+- **Sharing**: Organizes images for community use\
+- **Practicality**: Provides real utility with safety measures
 
-This tool enables you to easily retrieve images from the web and store them in a well-organized directory structure. It handles various edge cases gracefully and provides a reliable method for collecting images for personal or educational use.
+------------------------------------------------------------------------
 
-## Features
+## ✨ Features
 
-- 🌐 **Community**: Connects to the wider web to fetch images from any accessible URL
-- 🛡️ **Respect**: Handles errors gracefully without crashing, respecting both user experience and server limitations
-- 📁 **Sharing**: Organizes fetched images in a dedicated directory for easy access and sharing
-- 🔧 **Practicality**: Solves the real need of quickly downloading and organizing images from the web
+-   ✅ **Interactive mode**: Enter one URL at a time\
+-   ✅ **Batch mode**: Provide multiple URLs (comma-separated or
+    line-separated)\
+-   ✅ **Debug mode**: Detailed logging for developers\
+-   ✅ **Safety first**:
+    -   Validates URLs (HTTP/HTTPS only)\
+    -   Ensures files are images before saving\
+    -   Limits file size to 50MB\
+    -   Avoids duplicate downloads using MD5 hashes\
+-   ✅ **Smart filenames**: Automatically generates safe filenames based
+    on URL or content type\
+-   ✅ **Graceful error handling** with clear feedback
 
-## Requirements
+------------------------------------------------------------------------
 
-- Python 3.6 or higher
-- `requests` library
+## 📦 Installation
 
-## Installation
+1.  Clone this repository:
 
-1. Clone or download this script to your local machine
-2. Install the required dependency:
+    ``` bash
+    git clone https://github.com/Bkirop/Ubuntu_Requests.git
+    cd ubuntu-image-fetcher
+    ```
 
-```bash
-pip install requests
+2.  Install dependencies:
+
+    ``` bash
+    pip install requests
+    ```
+
+------------------------------------------------------------------------
+
+## 🚀 Usage
+
+### Run the program
+
+``` bash
+python image_fetcher_script.py
 ```
 
-## Usage
+You'll be prompted to choose a mode: 1. **Interactive mode** -- Enter
+image URLs one by one\
+2. **Batch mode** -- Provide multiple URLs at once\
+3. **Debug mode** -- Enables detailed logging (choose interactive or
+batch afterward)
 
-Run the script from your terminal:
+### Run tests with sample URLs
 
-```bash
-python image_fetcher.py
+``` bash
+python image_fetcher_script.py --test
 ```
 
-The script will:
-1. Prompt you to enter an image URL
-2. Automatically create a `Fetched_Images` directory if it doesn't exist
-3. Download the image from the provided URL
-4. Save it with an appropriate filename
-5. Provide feedback on the operation status
+------------------------------------------------------------------------
 
-### Example
+## 📖 Examples
 
-```
-Enter the image URL: https://example.com/beautiful-sunset.jpg
-✓ Image successfully downloaded and saved as: Fetched_Images/beautiful-sunset.jpg
-```
+### Interactive Mode
 
-## Technical Implementation
+    Ubuntu Image Fetcher
+    Choose your approach:
+    1. Interactive mode (single URLs)
+    2. Batch mode (multiple URLs)
+    3. Debug mode (with detailed logging)
 
-### Core Functionality
+    Enter your choice (1, 2, or 3): 1
+    Welcome to the Ubuntu Image Fetcher
+    A tool for mindfully collecting images from the web
+    Embodying the spirit: 'I am because we are'
 
-- **URL Validation**: Checks if the provided URL is accessible
-- **HTTP Error Handling**: Properly handles various HTTP status codes (404, 403, 500, etc.)
-- **Directory Management**: Uses `os.makedirs()` with `exist_ok=True` to create the storage directory
-- **Filename Extraction**: Intelligently extracts filenames from URLs or generates appropriate ones
-- **Binary File Handling**: Saves images in binary mode to preserve file integrity
+    Please enter the image URL (or 'quit' to exit): https://httpbin.org/image/jpeg
+    🌍 Connecting to: https://httpbin.org/image/jpeg
+    📄 Content type: image/jpeg
+    📏 Size: 0.01MB
+    ✓ Successfully fetched: jpeg
+    ✓ Image saved to: Fetched_Images/jpeg
 
-### Error Handling
+### Batch Mode
 
-The script gracefully handles:
-- Network connectivity issues
-- Invalid URLs
-- HTTP errors (4xx, 5xx status codes)
-- Permission issues when creating directories or saving files
-- Corrupted or incomplete downloads
+    Enter your choice (1, 2, or 3): 2
 
-### File Organization
+    Batch Mode: Enter URLs separated by commas or one per line
+    End with an empty line when done:
+    https://httpbin.org/image/png, https://httpbin.org/image/jpeg
 
-```
-project-directory/
-│
-├── image_fetcher_scripty.py
-└── Fetched_Images/
-    ├── image1.jpg
-    ├── image2.png
-    └── ...
-```
+------------------------------------------------------------------------
 
-## Ubuntu Principles Implementation
+## 🛡️ Safety Notes
 
-### 1. Community 🤝
-- Connects your local environment to the global web community
-- Enables access to shared visual resources across the internet
-- Facilitates collaboration by making web images easily accessible locally
+-   Only supports **HTTP/HTTPS** URLs\
+-   Rejects non-image content types\
+-   Limits file size to **50MB**\
+-   Prevents duplicate downloads
 
-### 2. Respect 🙏
-- Handles network failures and server errors without crashing
-- Provides clear, informative error messages
-- Respects server responses and doesn't retry aggressively
-- Validates input before making requests
+------------------------------------------------------------------------
 
-### 3. Sharing 📤
-- Organizes downloaded images in a dedicated, shareable directory
-- Creates a clean file structure that others can easily understand
-- Preserves original filenames when possible for better identification
-- Makes collected images ready for distribution or collaborative use
+## 🧪 Development
 
-### 4. Practicality 🔨
-- Solves the common need of downloading web images quickly
-- Requires minimal setup and dependencies
-- Provides immediate, tangible value
-- Uses standard Python libraries for maximum compatibility
+If you'd like to contribute, fork the repo and create a pull request.\
+Debug mode (`choice = 3`) is especially useful for developers who want
+deeper insights.
 
-## Error Messages and Troubleshooting
+------------------------------------------------------------------------
 
-| Error Type | Possible Causes | Solutions |
-|------------|----------------|-----------|
-| `ConnectionError` | No internet connection, server down | Check internet connection, try again later |
-| `HTTP 404` | Image not found | Verify the URL is correct |
-| `HTTP 403` | Access forbidden | Image may be protected, try a different source |
-| `Permission Error` | Cannot create directory/file | Check write permissions in the current directory |
-| `Invalid URL` | Malformed URL | Ensure URL starts with http:// or https:// |
+## 🙏 Acknowledgment
 
-## Supported Image Formats
+This project is inspired by the Ubuntu philosophy:\
+\> *"I am because we are."*
 
-The script can download any file format, but is optimized for common image types:
-- JPEG (.jpg, .jpeg)
-- PNG (.png)
-- GIF (.gif)
-- WebP (.webp)
-- SVG (.svg)
-- BMP (.bmp)
+It is not affiliated with Canonical or the Ubuntu operating system, but
+reflects the spirit of mindful, community-driven development.
 
-## Future Enhancements
-
-- [ ] Batch download from multiple URLs
-- [ ] Resume interrupted downloads
-- [ ] Image format conversion
-- [ ] Duplicate detection
-- [ ] Progress bar for large downloads
-- [ ] Configuration file support
-
-## Contributing
-
-Feel free to contribute improvements, bug fixes, or new features. This project embodies the Ubuntu spirit of community collaboration.
-
-## License
-
-This project is open source and available under the [MIT License](LICENSE).
-s
-## Support
-
-If you encounter issues or have questions:
-1. Check the error messages for guidance
-2. Ensure you have the required dependencies installed
-3. Verify your internet connection
-4. Try with a different image URL to isolate the issue
-
----
-
-*Built with Ubuntu principles: Community • Respect • Sharing • Practicality*
+------------------------------------------------------------------------
